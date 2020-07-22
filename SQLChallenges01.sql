@@ -19,7 +19,7 @@ Select * from products Where StockLevel BETWEEN 500 AND 1200 order by price;
 
 Select products.Name, categories.Name 
 from products
-INNER JOIN categories on products.CategoryID = categories.CategoryID
+JOIN categories on products.CategoryID = categories.CategoryID
 WHERE categories.CategoryID=  1;
 
 -- Another way
@@ -66,5 +66,21 @@ WHERE Products.ProductID = Reviews.ProductID AND Products.Name = "Visio TV" LIMI
 
 -- EXTRA
 -- Your goal is to write a query that serves as an employee sales report.
--- This query should return the employeeID, the employee's first and last name, the name of each product, how many of that product they sold */
+-- This query should return the employeeID, the employee's first and last name, the name of each product, 
+-- how many of that product they sold */
+
+SELECT EmployeeID from employees  GROUP BY EmployeeID;
+
+SELECT *  FROM sales;
+
+-- SELECT salesID, sales.ProductID, EmployeeID, Quantity
+-- SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Quantity
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, SUM(Quantity), SalesID, products.ProductID, products.Name
+
+from employees
+INNER JOIN sales ON sales.EmployeeID = employees.EmployeeID 
+  JOIN products ON products.ProductID AND sales.productID
+  group by employees.EmployeeID, products.ProductID;
+  
+ -- JOIN employees ON sales.EmployeeID = employees.EmployeeID;
 
