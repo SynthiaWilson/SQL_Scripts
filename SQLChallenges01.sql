@@ -75,7 +75,7 @@ SELECT *  FROM sales;
 
 -- SELECT salesID, sales.ProductID, EmployeeID, Quantity
 -- SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Quantity
-SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, SUM(Quantity), SalesID, products.ProductID, products.Name
+SELECT Employees.EmployeeID, Employees.FirstName, Employees.LastName, Quantity, SalesID, products.ProductID, products.Name
 
 from employees
 INNER JOIN sales ON sales.EmployeeID = employees.EmployeeID 
